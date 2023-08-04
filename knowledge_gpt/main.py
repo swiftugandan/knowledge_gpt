@@ -56,7 +56,7 @@ try:
 except Exception as e:
     display_file_read_error(e)
 
-chunked_file = chunk_file(file, chunk_size=300, chunk_overlap=0)
+chunked_file = chunk_file(file, chunk_size=7000, chunk_overlap=1000)
 
 if not is_file_valid(file):
     st.stop()
@@ -102,7 +102,9 @@ if submit:
         return_all=return_all_chunks,
         model=MODEL,
         openai_api_key=openai_api_key,
-        temperature=0,
+        temperature=0.4,
+        model_name="gpt-3.5-turbo-16k",
+        max_tokens=1000,
     )
 
     with answer_col:
